@@ -22,6 +22,7 @@ function start() {
 	//});
 }
 
+spawn("notify-send",["qwe"]).on('error', function (err) {/*не сработало*/});
 start();
 fs.watchFile(file, function(curr,prev) {
 	proc.kill("SIGTERM"); //или более суровый SIGKILL
