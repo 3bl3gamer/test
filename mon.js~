@@ -16,6 +16,9 @@ function start() {
 	});
 	proc.stderr.on('data', function (data) {
 		process.stderr.write(data);
+		//if (data == "") return;
+		spawn("killall", ["notify-osd"]);
+		spawn("notify-send", [data]).on('error', function (err) {console.log("ERR "+err)});
 	});
 	//proc.on('close', function (code, signal) {
 	//	console.log('child process terminated due to receipt of signal '+signal);
